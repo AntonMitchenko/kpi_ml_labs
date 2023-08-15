@@ -6,7 +6,7 @@ Each folder contains several files:
 > 2) Main file (code of our program)
 > 3) The task that was posted by the teacher
 
-Each main file is a file as type **"IPYNB" (.ipynb)** that was pre-launched, and you can see it running.
+Each main file is a file as type `"IPYNB" (.ipynb)` that was pre-launched, and you can see it running.
 
 # There are 5 labs in total
 
@@ -19,15 +19,131 @@ Each main file is a file as type **"IPYNB" (.ipynb)** that was pre-launched, and
  > Pandas is a vital library in the field of machine learning, offering powerful tools for data manipulation and analysis. With its DataFrame and Series data structures, Pandas simplifies data handling, transformation, and exploration, making it indispensable for tasks like data preprocessing, cleaning, and feature engineering. Its functionalities for grouping, aggregation, and merging are pivotal in preparing data for model training. Furthermore, Pandas' seamless integration with other machine learning libraries streamlines the process of loading, manipulating, and transforming datasets, contributing significantly to the efficiency and effectiveness of the machine learning pipeline.
     
   ## 2. Metrics
-> Machine learning metrics serve as vital evaluation tools for assessing the performance of models. These metrics provide quantitative insights into a model's effectiveness in making predictions. Metrics such as accuracy, precision, recall, and F1-score are essential for classification tasks, measuring the correctness and completeness of predictions. For regression tasks, metrics like mean squared error (MSE) and root mean squared error (RMSE) gauge the disparity between predicted and actual values. Area under the receiver operating characteristic curve (AUC-ROC) and area under the precision-recall curve (AUC-PR) are crucial for assessing model performance across different probability thresholds. These metrics collectively aid in model selection, hyperparameter tuning, and understanding the trade-offs between different aspects of model performance.
-> 
-<img src="http://kflu.github.io/2016/08/26/2016-08-26-visualizing-precision-recall/2016-08-26-visualizing-precision-recall-1.png"/>
+> Metrics in machine learning are quantitative measures that are used to evaluate the performance of models. They allow you to evaluate how well the model performs its tasks by comparing its predictions with actual values or classes. Metrics play a key role in model selection, hyperparameter tuning, results analysis, and comparison of different machine learning methods.
+
+Depending on the type of problem, such as classification, regression, or clustering, the metrics may vary.
+
+1. Accuracy: Accuracy measures the ratio of correctly predicted instances to the total number of instances. It's a straightforward metric for classification tasks, but it might not be suitable for imbalanced datasets.
+
+2. Precision: Precision quantifies the proportion of true positive predictions among all positive predictions. It's crucial when minimizing false positives is important, such as in medical diagnoses.
+
+3. Recall (Sensitivity or True Positive Rate): Recall calculates the ratio of true positive predictions to the actual positive instances. It's important when minimizing false negatives is critical, like identifying all relevant documents in information retrieval.
+
+<p align="center">
+  <img src="http://kflu.github.io/2016/08/26/2016-08-26-visualizing-precision-recall/2016-08-26-visualizing-precision-recall-1.png"/>
+</p>
+
+4. F1-Score: The F1-score is the harmonic mean of precision and recall. It provides a balance between precision and recall and is useful when there's an uneven class distribution.
+
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:828/0*Dn7_MxfJpHj5jZa4.gif"/>
+</p>
+
+5. Mean Squared Error (MSE): MSE is a common metric for regression tasks. It calculates the average of squared differences between predicted and actual values, giving more weight to larger errors.
+
+<p align="center">
+  <img src="https://images.squarespace-cdn.com/content/v1/5acbdd3a25bf024c12f4c8b4/1600368657769-5BJU5FK86VZ6UXZGRC1M/Mean+Squared+Error.png?format=1500w"/>
+</p>
+
+<p align="center">
+  <img src="https://suboptimal.wiki/images/mse_5.jpg" width="700" height="400"/>
+</p>
+
+<p align="center">
+  <img src="https://suboptimal.wiki/images/mse_4.jpg" width="700" height="400"/>
+</p>
+
+6. Root Mean Squared Error (RMSE): RMSE is the square root of the MSE. It's more interpretable as it's in the same unit as the target variable, making it a popular choice for evaluating regression models.
+
+7. Area Under the ROC Curve (AUC-ROC): AUC-ROC quantifies a classifier's ability to distinguish between classes. It plots the true positive rate against the false positive rate and provides a single value representing overall performance.
+
+<p align="center">
+  <img src="https://i0.wp.com/sefiks.com/wp-content/uploads/2020/12/roc-curve-original.png?fit=726%2C576&ssl=1" width="600" height="400"/>
+</p>
+
+8. Area Under the Precision-Recall Curve (AUC-PR): AUC-PR focuses on the trade-off between precision and recall. It's particularly useful when dealing with imbalanced datasets and provides insights into model performance at different prediction thresholds.
+
+<p align="center">
+  <img src="https://cdn-images-1.medium.com/max/437/1*dHeKnaFtqxnMqLfCdJz5bA.png" width="600" height="400"/>
+</p>
+
+9. Confusion Matrix: Although not a single metric, the confusion matrix provides a comprehensive view of a model's performance by showing true positives, true negatives, false positives, and false negatives.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/15989924/104855460-c6130600-58c1-11eb-8475-f7337a092c77.png" width="600" height="400"/>
+</p>
+
+10. MAPE, or Mean Absolute Percentage Error, is a metric commonly used to measure the accuracy of predictions in forecasting and regression tasks. It provides insight into how well a model's predictions match the actual values as a percentage of the actual values. 
+
+<p align="center">
+  <img src="https://i.imgur.com/YYMpqUY.jpg" width="600" height="250"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/HPlrPmu.jpg" width="600" height="400"/>
+</p>
+
 
   ## 3. Decision Tree
+> A decision tree is a popular machine learning algorithm used for both classification and regression tasks. It is a tree-like structure that represents a sequence of decisions and their potential consequences. Decision trees recursively partition the data into subsets based on the values of input features, leading to a hierarchical structure where each internal node represents a decision based on a feature, each branch represents an outcome of that decision, and each leaf node represents a prediction or classification label.
+
+<p align="center">
+  <img src="https://images.datacamp.com/image/upload/v1677504957/decision_tree_for_heart_attack_prevention_2140bd762d.png"/>
+</p>
+
+Decision trees have various parameters that allow you to control their behavior, prevent overfitting, and customize their performance. Here are some important parameters commonly found in decision tree algorithms:
+
+1. Criterion: This parameter determines the function to measure the quality of a split. Common criteria include "gini" for the Gini impurity and "entropy" for information gain. Gini measures the probability of a random sample being misclassified, while entropy measures the disorder or uncertainty in the data.
+   
+  * Gini
+    >The gini impurity measures the frequency at which any element of the dataset will be mislabelled when it is randomly labeled.
+    >The minimum value of the Gini Index is 0. This happens when the node is pure, this means that all the contained elements in the node are of one unique class. Therefore, this node will not be split again. Thus, the optimum split is chosen by the features with less Gini Index. Moreover, it gets the maximum value when the probability of the two classes are the same.
+
+  * Entropy
+     >Entropy is a measure of information that indicates the disorder of the features with the target. Similar to the Gini Index, the optimum split is chosen by the feature with less entropy. It gets its maximum value when the probability of the two classes is the same and a node is pure when the entropy has its minimum value, which is 0:
+     
+ <p align="center">
+  <img src="https://thatascience.com/wp-content/uploads/2018/10/ginientropy.jpg"/>
+ </p>
+
+  More info about criterions ***[HERE](https://quantdare.com/decision-trees-gini-vs-entropy/)***
+
+2. Max Depth: Limits the maximum depth of the tree. Setting this parameter can help prevent overfitting by controlling how deep the tree can grow.
+   
+ <p align="center">
+  <img src="https://1329420134-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LagOeJ2nL90MQERwhxy%2F-LjmGR4-Zkpsp-CXV3zt%2F-Lk-zlkug29fjZ6T44mL%2Fimage.png?alt=media&token=f775f1ce-2256-4172-af1b-e66e916ec127"/>
+ </p>
+ 
+3. Min Samples Split: Specifies the minimum number of samples required to split an internal node. This helps prevent splits on small subsets, which might lead to overfitting.
+
+ <p align="center">
+  <img src="https://1329420134-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LagOeJ2nL90MQERwhxy%2F-LjmGR4-Zkpsp-CXV3zt%2F-Lk-zrrQar1T7mfpJ4jY%2Fimage.png?alt=media&token=75b26a95-2227-4832-8860-8e1086a4743b"/>
+ </p>
+ 
+4. Min Samples Leaf: Sets the minimum number of samples required to be in a leaf node. Similar to min_samples_split, this parameter helps control overfitting by ensuring that leaves have a minimum amount of data.
+ 
+ <p align="center">
+  <img src="https://1329420134-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LagOeJ2nL90MQERwhxy%2F-LjmGR4-Zkpsp-CXV3zt%2F-Lk-zxxgBiLpOxwn1Fzn%2Fimage.png?alt=media&token=68c7cfa8-2a50-4cfa-a161-9e77e664c4bf"/>
+ </p>
+ 
+5. Max Features: Determines the number of features to consider when looking for the best split. It can be an absolute number or a fraction of the total features.
+
+6. Splitter: This parameter defines the strategy for selecting the best feature to split on. It can be "best" to choose the best split or "random" to choose the best random split.
+
+7. Class Weights: Assigns weights to classes, which can be useful when dealing with imbalanced datasets. It adjusts the impact of different classes on the criterion for splitting.
+
+8. Random State: Provides a seed for the random number generator used for random decisions, making the results reproducible.
+
+9. Presort: Determines whether to presort the data for faster fitting. It's helpful for smaller datasets but can slow down training for larger datasets.
+
+  `Good guide about decion tree with examples` ***[HERE](https://julienbeaulieu.gitbook.io/wiki/sciences/machine-learning/decision-trees)***
 
   ## 4. K-Nearest Neighbors Method
 
   ## 5. Clustering
+  
+<p align="center">
+  <img src="https://github.com/AntonMitchenko/kpi_ml_labs/blob/main/assets/image/1621725540_catworking.gif"/>
+</p>
 
-![catworking](https://github.com/AntonMitchenko/kpi_ml_labs/blob/main/assets/image/1621725540_catworking.gif)
 
